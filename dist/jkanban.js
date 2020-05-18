@@ -506,7 +506,7 @@ var dragula = require("dragula");
           var customCssHandler = self.options.itemHandleOptions.customCssHandler;
           var customCssIconHandler = self.options.itemHandleOptions.customCssIconHandler;
           if ((customCssHandler || undefined) === undefined) {
-            customCssHandler = "drag_handler";
+            // customCssHandler = "drag_handler";
           }
           if ((customCssIconHandler || undefined) === undefined) {
             customCssIconHandler = customCssHandler + "_icon";

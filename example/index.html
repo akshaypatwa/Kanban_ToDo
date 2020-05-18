@@ -80,32 +80,21 @@
             </div>
             <div class="bottom">
 
-                    <div id="myForm">
-                      <form  class="form-container">
-                        <!-- <h1>Login</h1> -->
+                    <div id="myForm1">
+                      <div  class="form-container">
+  
+                        <label><b>Requestor</b></label>
+                        <input type="text" id= "searchTxt" placeholder="Requestor" name="email1" required>
                     
-                        <label for="email"><b>Requestor</b></label>
-                        <input type="text" id= "searchTxt" placeholder="Requestor" name="email" required>
-                    
-                        <label for="psw"><b>Summary</b></label>
-                        <input type="password" placeholder="Enter Summary" name="psw" required>
-                        <button class ="btn btn-success" id="addToDo" onclick="xxx()">Submit</button>
-                      </form>
+                        <label><b>Summary</b></label>
+                        <input type="password" placeholder="Enter Summary" name="psw1" required>
+                        <button class ="btn btn-success" id="addToDo">Create</button>
+                      </div>
                 
                         <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
                       
                         </div>
-
-                        <script>
-                          function xxx()
-                          {
-                            var aaa = document.getElementById("searchTxt").value;
-                            alert(aaa);
-                          }
-                        </script>
-
-                        
-                       
+  
 
               </div>
               <div class="row">
@@ -187,6 +176,9 @@ function closeForm() {
             dragTo: ["_working"],
             item: [
               {
+              
+
+
                 id: "_test_delete",
                 title: "Try drag this (Look the console)",
                 drag: function(el, source) {
@@ -200,6 +192,9 @@ function closeForm() {
                 }
               },
               {
+
+
+
                 title: "Try Click This!",
                 click: function(el) {
                   alert("click");
@@ -211,6 +206,7 @@ function closeForm() {
             ]
           },
           {
+
             id: "_working",
             title: "Working (Try drag me too)",
             class: "warning"
@@ -237,13 +233,13 @@ function closeForm() {
       var toDoButton = document.getElementById("addToDo");
       toDoButton.addEventListener("click", function() {
         
-        var div11 = document.createElement('div');
-        div11.innerHTML = 'Hi there!';
+        // var div11 = document.createElement('div');
+        // div11.innerHTML = 'Hi there!';
 
         KanbanTest.addElement("_todo", {
           
           
-          title: '<div class="body1"><div class="courses-container"><div class="course"><div class="course-preview"><div class="fontsize">Ticket</div><div class="fontsize">INC2321</div></div><div class="course-info"><div class="progress-container"><div class="progress"></div><span class="progress-text">In Progress</span></div><h6>Summary</h6><div class="sumcontent">Callbacks & Closures</h6><button class="btn1">View</button></div></div></div></div>'
+          title: '<div class="body1"><div class="courses-container"><div class="course"><div class="course-preview item_handle drag_handler"><div class="fontsize">Ticket</div><div class="fontsize">INC2321</div></div><div class="course-info"><div class="progress-container"><div class="progress"></div><span class="progress-text">In Progress</span></div><h6>Summary</h6><div class="sumcontent">Callbacks & Closures</h6><button class="btn1">View</button></div></div></div></div>'
                  
         });
       });
