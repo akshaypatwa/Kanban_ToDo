@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Title</title>
-    <link rel="stylesheet" href="../dist/jkanban.min.css" />
+    <link rel="stylesheet" href="../dist/jkanban.css" />
+    <link rel="stylesheet" href="../dist/jkanban_form.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/card_layout.css">
     <link rel="stylesheet" href="../dist/jkanban_material_popup.css">
     <script src="../dist/jkanban.js"></script>
 
@@ -77,37 +79,33 @@
               </div>
             </div>
             <div class="bottom">
-              <!-- <div class="row"> -->
-                
-                <!-- <div class="form-popup" id="myForm">
-                  <form action="/action_page.php" class="form-container"> -->
-                    <!-- <h1>Login</h1>
-                    <label for="email"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="email" required>
-<br>
-                    <label for="email"><b>Summary</b></label>
-                    <input type="text" placeholder="Enter Summary" name="email" required> 
-                    <br>  
-                    <button class ="btn btn-success" type="submit" class="btn" id="addToDo1">Submit</button>
-                   
-    
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
 
                     <div id="myForm">
                       <form  class="form-container">
                         <!-- <h1>Login</h1> -->
                     
                         <label for="email"><b>Requestor</b></label>
-                        <input type="text" placeholder="Requestor" name="email" required>
+                        <input type="text" id= "searchTxt" placeholder="Requestor" name="email" required>
                     
                         <label for="psw"><b>Summary</b></label>
                         <input type="password" placeholder="Enter Summary" name="psw" required>
-                        <button class ="btn btn-success" id="addToDo">Submit</button>
+                        <button class ="btn btn-success" id="addToDo" onclick="xxx()">Submit</button>
                       </form>
                 
                         <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
                       
                         </div>
+
+                        <script>
+                          function xxx()
+                          {
+                            var aaa = document.getElementById("searchTxt").value;
+                            alert(aaa);
+                          }
+                        </script>
+
+                        
+                       
 
               </div>
               <div class="row">
@@ -119,107 +117,6 @@
         </div>
       </div>
     </div>
-    
-
-
-
-<!-- Custom Script -->
-
-
-<style>
-  body {font-family: Arial, Helvetica, sans-serif;}
-  * {box-sizing: border-box;}
-  
-  /* Button used to open the contact form - fixed at the bottom of the page */
-  .open-button {
-    background-color: #555;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
-    position: fixed;
-    bottom: 23px;
-    right: 28px;
-    width: 280px;
-  }
-  
-  /* The popup form - hidden by default */
-  .form-popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-  }
-  
-  /* Add styles to the form container */
-  .form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: white;
-  }
-  
-  /* Full-width input fields */
-  .form-container input[type=text], .form-container input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  /* When the inputs get focus, do something */
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-  
-  /* Set a style for the submit/login button */
-  .form-container .btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
-  }
-  
-  /* Add a red background color to the cancel button */
-  .form-container .cancel {
-    background-color: red;
-  }
-  
-  /* Add some hover effects to buttons */
-  .form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-  }
-  </style>
-
-
-<!-- 
-<button class ="btn btn-success" onclick="openForm()" >Open</button> 
-<button type="submit" class="btn" id="addToDo1">Submit1</button> -->
-
-
-<!-- <div class="form-popup" id="myForm">
-  <form  class="form-container">
-    <h1>Login</h1>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email">
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw">
-
-    <button type="submit" class="btn" id="addToDo1">Submit</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div> -->
-
 
 <script>
   function openForm() {
@@ -230,10 +127,6 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
-
-
-<!-- End of custom script -->
-
     
     <script>
       var KanbanTest = new jKanban({
@@ -252,35 +145,38 @@ function closeForm() {
         },
         
         
-        //this is the top corner button of each main card
-        buttonClick: function(el, boardId) {
-          console.log(el);
-          console.log(boardId);
+        // //this is the top corner button of each main card
+        // buttonClick: function(el, boardId) {
+        //   console.log(el);
+        //   console.log(boardId);
           
-          // create a form to enter element
-          var formItem = document.createElement("form");
-          formItem.setAttribute("class", "itemform");
-          formItem.innerHTML =
-            '<div class="form-group"><textarea class="form-control" rows="2" autofocus></textarea></div><div class="form-group"><button onclick="myFunction()" type="submit" id ="submitak" class="btn btn-primary btn-xs pull-right">Create</button><button type="button" id="CancelBtn" class="btn btn-default btn-xs pull-right">Cancel</button></div>';
-           
-          KanbanTest.addForm(boardId, formItem);
-          formItem.addEventListener("submit", function(e) {
-            e.preventDefault();
-            var text = e.target[0].value;
-            KanbanTest.addElement(boardId, {
-              title: text,
+        //   // create a form to enter element
+        //   var formItem = document.createElement("form");
+        //   formItem.setAttribute("class", "itemform");
+        //   formItem.innerHTML =
+        //     '<div class="form-group"><textarea class="form-control" rows="2" autofocus></textarea></div><div class="form-group"><button onclick="myFunction()" type="submit" id ="submitak" class="btn btn-primary btn-xs pull-right">Create</button><button type="button" id="CancelBtn" class="btn btn-default btn-xs pull-right">Cancel</button></div>';
+        //     // formItem.innerHTML =
+        //     // '<div class="item_handle drag_handler"><i class="item_handle drag_handler_icon"></i></div><div class="body1"><div class="courses-container"><div class="course"><div class="course-preview"><h6>Course</h6><h2>JavaScript Fundamentals</h2><a href="#">View all chapters <i class="fas fa-chevron-right"></i></a></div><div class="course-info"><div class="progress-container"><div class="progress"></div><span class="progress-text">6/9 Challenges</span></div><h6>Chapter 4</h6><h2>Callbacks & Closures</h2><button class="btn">Continue</button></div></div></div></div>';
+            
+
+        //   KanbanTest.addForm(boardId, formItem);
+        //   formItem.addEventListener("submit", function(e) {
+        //     e.preventDefault();
+        //     var text = e.target[0].value;
+        //     KanbanTest.addElement(boardId, {
+        //       title: text,
               
               
-            });
+        //     });
 
-            formItem.parentNode.removeChild(formItem);
-          });
+        //     formItem.parentNode.removeChild(formItem);
+        //   });
 
 
-          document.getElementById("CancelBtn").onclick = function() {
-            formItem.parentNode.removeChild(formItem);
-          };
-        },
+        //   document.getElementById("CancelBtn").onclick = function() {
+        //     formItem.parentNode.removeChild(formItem);
+        //   };
+        // },
         
         addItemButton: true,
         boards: [
@@ -307,6 +203,8 @@ function closeForm() {
                 title: "Try Click This!",
                 click: function(el) {
                   alert("click");
+
+                  
                 },
                 class: ["peppe", "bello"]
               }
@@ -315,15 +213,8 @@ function closeForm() {
           {
             id: "_working",
             title: "Working (Try drag me too)",
-            class: "warning",
-            item: [
-              {
-                title: "Do Something!"
-              },
-              {
-                title: "Run?"
-              }
-            ]
+            class: "warning"
+
           },
           {
             id: "_done",
@@ -342,22 +233,27 @@ function closeForm() {
         ]
       });
 
-      // alert(text);
-
-  
 
       var toDoButton = document.getElementById("addToDo");
       toDoButton.addEventListener("click", function() {
+        
+        var div11 = document.createElement('div');
+        div11.innerHTML = 'Hi there!';
+
         KanbanTest.addElement("_todo", {
-          title: "Test Add"
+          
+          
+          title: '<div class="body1"><div class="courses-container"><div class="course"><div class="course-preview"><div class="fontsize">Ticket</div><div class="fontsize">INC2321</div></div><div class="course-info"><div class="progress-container"><div class="progress"></div><span class="progress-text">In Progress</span></div><h6>Summary</h6><div class="sumcontent">Callbacks & Closures</h6><button class="btn1">View</button></div></div></div></div>'
+                 
         });
       });
-
-
+    
       var toDoButton = document.getElementById("addToDo1");
       toDoButton.addEventListener("click", function() {
+        
         KanbanTest.addElement("_todo", {
           title: "Test Add"
+      
         });
       });
 
@@ -397,12 +293,6 @@ function closeForm() {
         //console.log(item);
       });
 
-
-      // custom functions
-
-      // function myFunction(text) {
-      //       alert(text)
-      //       }
 
 
     </script>
