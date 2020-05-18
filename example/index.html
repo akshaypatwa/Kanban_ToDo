@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../dist/jkanban.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/jkanban_material_popup.css">
+    <script src="../dist/jkanban.js"></script>
 
     <style>
       body {
@@ -15,6 +17,7 @@
         margin: 0;
         padding: 0;
         background-color: #6d6d6d;
+        overflow:overlay;
       }
 
       #myKanban {
@@ -40,16 +43,198 @@
     </style>
   </head>
   <body>
-    <div id="myKanban"></div>
-    <button class = "btn btn-success" id="addDefault">Add "Default" board</button>
-    <!-- <br /> -->
-    <button class ="btn btn-success" id="addToDo">Add element in "To Do" Board</button>
-    <!-- <br /> -->
-    <button class = "btn btn-danger" id="removeBoard">Remove "Done" Board</button>
-    <!-- <br /> -->
-    <button class = "btn btn-danger" id="removeElement">Remove "My Task Test"</button>
+    
 
-    <script src="../dist/jkanban.js"></script>
+    <h1 style="color: white; font-size: 56px;padding-left: 11px;">New Kanban View</h1>
+    <div id="myKanban"></div>
+    <!-- <button class = "btn btn-success" id="addDefault">Add "Default" board</button>
+    
+    <button class ="btn btn-success" id="addToDo">Add element in "To Do" Board</button>
+    
+   
+    <button class = "btn btn-danger" id="removeBoard">Remove "Done" Board</button>
+   
+    <button class = "btn btn-danger" id="removeElement">Remove "My Task Test"</button> -->
+
+    <div >
+      <div class="email" onclick="this.classList.add('expand')">
+        <div class="from">
+          <div class="from-contents">
+            <div class="avatar me"></div>
+            <div class="name">+ New Ticket</div>
+          </div>
+        </div>
+        <div class="to">
+          <div class="to-contents">
+            <div class="top">
+              <div class="avatar-large me"></div>
+              <div class="name-large">New Ticket</div>
+              <div class="x-touch" onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();">
+                <div class="x">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="bottom">
+              <!-- <div class="row"> -->
+                
+                <!-- <div class="form-popup" id="myForm">
+                  <form action="/action_page.php" class="form-container"> -->
+                    <!-- <h1>Login</h1>
+                    <label for="email"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="email" required>
+<br>
+                    <label for="email"><b>Summary</b></label>
+                    <input type="text" placeholder="Enter Summary" name="email" required> 
+                    <br>  
+                    <button class ="btn btn-success" type="submit" class="btn" id="addToDo1">Submit</button>
+                   
+    
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+
+                    <div id="myForm">
+                      <form  class="form-container">
+                        <!-- <h1>Login</h1> -->
+                    
+                        <label for="email"><b>Requestor</b></label>
+                        <input type="text" placeholder="Requestor" name="email" required>
+                    
+                        <label for="psw"><b>Summary</b></label>
+                        <input type="password" placeholder="Enter Summary" name="psw" required>
+                        <button class ="btn btn-success" id="addToDo">Submit</button>
+                      </form>
+                
+                        <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+                      
+                        </div>
+
+              </div>
+              <div class="row">
+
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+<!-- Custom Script -->
+
+
+<style>
+  body {font-family: Arial, Helvetica, sans-serif;}
+  * {box-sizing: border-box;}
+  
+  /* Button used to open the contact form - fixed at the bottom of the page */
+  .open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  </style>
+
+
+<!-- 
+<button class ="btn btn-success" onclick="openForm()" >Open</button> 
+<button type="submit" class="btn" id="addToDo1">Submit1</button> -->
+
+
+<!-- <div class="form-popup" id="myForm">
+  <form  class="form-container">
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email">
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw">
+
+    <button type="submit" class="btn" id="addToDo1">Submit</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div> -->
+
+
+<script>
+  function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+
+<!-- End of custom script -->
+
+    
     <script>
       var KanbanTest = new jKanban({
         element: "#myKanban",
@@ -65,28 +250,38 @@
           console.log(target.parentElement.getAttribute('data-id'));
           console.log(el, target, source, sibling)
         },
+        
+        
+        //this is the top corner button of each main card
         buttonClick: function(el, boardId) {
           console.log(el);
           console.log(boardId);
+          
           // create a form to enter element
           var formItem = document.createElement("form");
           formItem.setAttribute("class", "itemform");
           formItem.innerHTML =
-            '<div class="form-group"><textarea class="form-control" rows="2" autofocus></textarea></div><div class="form-group"><button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button><button type="button" id="CancelBtn" class="btn btn-default btn-xs pull-right">Cancel</button></div>';
-
+            '<div class="form-group"><textarea class="form-control" rows="2" autofocus></textarea></div><div class="form-group"><button onclick="myFunction()" type="submit" id ="submitak" class="btn btn-primary btn-xs pull-right">Create</button><button type="button" id="CancelBtn" class="btn btn-default btn-xs pull-right">Cancel</button></div>';
+           
           KanbanTest.addForm(boardId, formItem);
           formItem.addEventListener("submit", function(e) {
             e.preventDefault();
             var text = e.target[0].value;
             KanbanTest.addElement(boardId, {
-              title: text
+              title: text,
+              
+              
             });
+
             formItem.parentNode.removeChild(formItem);
           });
+
+
           document.getElementById("CancelBtn").onclick = function() {
             formItem.parentNode.removeChild(formItem);
           };
         },
+        
         addItemButton: true,
         boards: [
           {
@@ -147,7 +342,19 @@
         ]
       });
 
+      // alert(text);
+
+  
+
       var toDoButton = document.getElementById("addToDo");
+      toDoButton.addEventListener("click", function() {
+        KanbanTest.addElement("_todo", {
+          title: "Test Add"
+        });
+      });
+
+
+      var toDoButton = document.getElementById("addToDo1");
       toDoButton.addEventListener("click", function() {
         KanbanTest.addElement("_todo", {
           title: "Test Add"
@@ -189,6 +396,15 @@
       allEle.forEach(function(item, index) {
         //console.log(item);
       });
+
+
+      // custom functions
+
+      // function myFunction(text) {
+      //       alert(text)
+      //       }
+
+
     </script>
   </body>
 </html>
